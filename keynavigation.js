@@ -51,7 +51,7 @@ var keynavigation = [
 	{key: '7',  left: 'u', up: '4', down:'0', right:'8'},
 	{key: '8',  left: '7', up: '5', down:'del', right:'9'},
 	{key: '9',  left: '8', up: '6', down:'clear', right:''},
-	{key: '0',  left: 'z', up: '8', down:'', right:''},
+	{key: '0',  left: 'z', up: '8', down:'', right:'del'},
 	{key: 'del',  left: '0', up: '8', down:'', right:'clear'},
 	{key: 'clear',  left: 'del', up: '9', down:'', right:''}
 ];
@@ -85,16 +85,27 @@ function eventPropFocus(event){
     event.stopImmediatePropagation();
 }
 
+function setSearchString(keyString){
+	var searchBox = document.getElementById("searchterm");
+	if(keyString === 'del'){
+		searchBox.value = (searchBox.value).substring(0, (searchBox.value).length - 1);
+	}
+	else if(keyString === 'clear'){
+		searchBox.value="";
+	}
+	else{
+		searchBox.value = searchBox.value+''+ keyString;
+	}
+}
+
 
 function keydown(event){
 	var rightItem = getCurrentItem().id;
 	var navItem = getKeyNavigation(rightItem)[0];
-	var searchBox = document.getElementById("searchterm");
 
 	if(event.keyCode === 13){
 		getCurrentItem().classList.add("alphanumberactive");
-		
-		searchBox.value = searchBox.value+''+ navItem.key;
+		setSearchString(navItem.key);
 		setTimeout(function(){
 			getCurrentItem().classList.remove("alphanumberactive");
 		},300);

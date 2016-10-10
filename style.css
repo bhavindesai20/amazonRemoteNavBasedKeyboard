@@ -8,9 +8,11 @@ html, body{
 
 .parent{
 	width: 80%;
-	margin:10% auto;
+	margin:5% auto;
 	border: 1px solid #fff;
 	min-height: 50vh; 
+	padding-bottom: 2vh;
+	overflow: hidden;
 }
 
 #searchterm{
@@ -20,6 +22,16 @@ html, body{
 	height:8vmin;
 	font-size: 6vmin;
 	color: blue;
+}
+
+.titleTag{
+	width:80%;
+	margin-left: 10%;
+	margin-top:2vh;
+	height:8vmin;
+	font-size: 4vmin;
+	color: #fff;
+	text-align: center;
 }
 
 #keyboardLayout{
@@ -41,7 +53,7 @@ html, body{
 	margin-left:1.28%;
 	margin-top:2vmin;
 	margin-bottom: 2vmin;
-	color:blue;
+	color:black;
 	width:13%;
 	float:left;
 	padding-top:2vmin;
@@ -81,7 +93,7 @@ html, body{
 	margin-left:3%;
 	margin-top:2vmin;
 	margin-bottom: 2vmin;
-	color:blue;
+	color:black;
 	width:30%;
 	float:left;
 	padding-top:2vmin;
