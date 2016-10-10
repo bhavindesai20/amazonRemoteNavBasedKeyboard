@@ -1,0 +1,91 @@
+html, body{
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+	background-color: black;
+}
+
+.parent{
+	width: 80%;
+	margin:10% auto;
+	border: 1px solid #fff;
+	min-height: 50vh; 
+}
+
+#searchterm{
+	width:80%;
+	margin-left: 10%;
+	margin-top:2vh;
+	height:8vmin;
+	font-size: 6vmin;
+	color: blue;
+}
+
+#keyboardLayout{
+	width:80%;
+	margin-left: 10%;
+	margin-top:2vh;
+	min-height: 5vh;
+	border: 1px solid #fff;
+}
+
+.parentalpha {
+	width:50%;
+	min-height: 1vh;
+	float:left;
+}
+
+.alphabets{
+	background-color: #fff;
+	margin-left:1.28%;
+	margin-top:1vmin;
+	margin-bottom: 0.5vmin;
+	color:blue;
+	width:13%;
+	float:left;
+	padding:3vmin;
+	font-size: 4vmin;
+	font-weight: 800;
+}
+
+.alphabets:focus, .numberTags:focus{
+	background-color: green;
+}
+
+.clearfix:after {
+   content: ".";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.numberpad{
+	width:20%;
+	min-height: 5vh;
+	float:left;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+}
+
+.numberTags{
+	background-color: #fff;
+	margin-left:3%;
+	margin-top:1vmin;
+	margin-bottom: 0.5vmin;
+	color:blue;
+	width:30%;
+	float:left;
+	padding:3vmin;
+	font-size: 4vmin;
+	font-weight: 800;
+}
+
+.otherkey{
+	width:20%;
+	min-height: 5vh;
+	float:left;
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+}
