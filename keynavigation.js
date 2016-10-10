@@ -49,9 +49,11 @@ var keynavigation = [
 	{key: '5',  left: '4', up: '2', down:'8', right:'6'},
 	{key: '6',  left: '5', up: '3', down:'9', right:''},
 	{key: '7',  left: 'u', up: '4', down:'0', right:'8'},
-	{key: '8',  left: '7', up: '5', down:'0', right:'9'},
-	{key: '9',  left: '8', up: '6', down:'0', right:''},
-	{key: '0',  left: 'z', up: '8', down:'', right:''}
+	{key: '8',  left: '7', up: '5', down:'del', right:'9'},
+	{key: '9',  left: '8', up: '6', down:'clear', right:''},
+	{key: '0',  left: 'z', up: '8', down:'', right:''},
+	{key: 'del',  left: '0', up: '8', down:'', right:'clear'},
+	{key: 'clear',  left: 'del', up: '9', down:'', right:''}
 ];
 
 function getKeyNavigation(itemId){
@@ -78,13 +80,7 @@ function focusElement(elementId){
     }
 }
 
-function eventPropWithFocus(item){
-	focusElement(item);
-	event.preventDefault();
-    event.stopImmediatePropagation();
-}
-
-function eventPropWithFocus(){
+function eventPropFocus(event){
 	event.preventDefault();
     event.stopImmediatePropagation();
 }
@@ -94,54 +90,54 @@ function keydown(event){
 	var rightItem = getCurrentItem().id;
 	var navItem = getKeyNavigation(rightItem)[0];
 	var searchBox = document.getElementById("searchterm");
+
 	if(event.keyCode === 13){
+		getCurrentItem().classList.add("alphanumberactive");
+		
 		searchBox.value = searchBox.value+''+ navItem.key;
-		event.preventDefault();
-		event.stopImmediatePropagation();
+		setTimeout(function(){
+			getCurrentItem().classList.remove("alphanumberactive");
+		},300);
+		eventPropFocus(event);
 	}
 
 	if(event.code === 'ArrowRight' || event.keyIdentifier === 'Right') {
 		if(navItem.right){
 			focusElement(navItem.right);
-			event.preventDefault();
-		    event.stopImmediatePropagation();
+			eventPropFocus(event);
 		}
 		else{
-			event.preventDefault();
-		    event.stopImmediatePropagation();
+			eventPropFocus(event);
 		}	
 	}
 
 	if(event.code === 'ArrowLeft' || event.keyIdentifier === 'Left') {
 		if(navItem.left){
 			focusElement(navItem.left);
-			event.preventDefault();
-		    event.stopImmediatePropagation();
+			eventPropFocus(event);
 		}
 		else{
-			eventPropWithFocus();
+			eventPropFocus(event);
 		}	
 	}
 
 	if(event.code === 'ArrowUp' || event.keyIdentifier === 'Up') {
 		if(navItem.up){
 			focusElement(navItem.up);
-			event.preventDefault();
-		    event.stopImmediatePropagation();
+			eventPropFocus(event);
 		}
 		else{
-			eventPropWithFocus();
+			eventPropFocus(event);
 		}	
 	}
 
 	if(event.code === 'ArrowDown' || event.keyIdentifier === 'Down') {
 		if(navItem.down){
 			focusElement(navItem.down);
-			event.preventDefault();
-		    event.stopImmediatePropagation();
+			eventPropFocus(event);
 		}
 		else{
-			eventPropWithFocus();
+			eventPropFocus(event);
 		}	
 	}
 
